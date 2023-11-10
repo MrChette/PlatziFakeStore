@@ -1,10 +1,10 @@
-package com.platzifakestore.microservices.springcloudconfigserver;
+package com.platzifakestore.microservices.eurekaserver;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringCloudConfigServerApplicationTests {
+class EurekaServerApplicationTests {
 
 	@Test
 	void contextLoads() {
