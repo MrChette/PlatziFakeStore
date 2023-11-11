@@ -2,8 +2,12 @@ package com.platzifakestore.microservices.products.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,10 +19,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDAO {
+public class Product {
 	
 	@Id
-	@Column(name="id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private long id;
 	
 	@Column(name="title", unique = false, nullable = false)
@@ -30,18 +35,15 @@ public class ProductDAO {
 	@Column(name="description", unique = false, nullable = false)
 	private String description;
 	
-	@Column(name="images", unique = false, nullable = false)
-	private List<String> images;
+	@ElementCollection
+    @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
+    @Column(name = "image")
+    private List<String> images;
 	
-	@Column(name="createdAt", unique = false, nullable = false)
-	private String createdAt;
 	
-	@Column(name="updatedAt", unique = false, nullable = false)
-	private String updatedAt;
-	
-	@ManyToOne 
-	@JoinColumn(name="category_id", nullable=false) 
-	private CategoryDAO category;
+	@ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
 	
 
 }

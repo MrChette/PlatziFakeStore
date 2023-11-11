@@ -9,16 +9,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class ProductModel {
 	
     private long id;
     private String title;
     private double price;
     private String description;
     private List<String> images;
-    private String createdAt;
-    private String updatedAt;
-    private Category category;
+    private CategoryModel category;
 
    
 }
