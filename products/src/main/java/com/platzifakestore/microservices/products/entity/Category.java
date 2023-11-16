@@ -26,8 +26,6 @@ public class Category {
 
     private String name;
     private String image;
-    private String createdAt;
-    private String updatedAt;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products;

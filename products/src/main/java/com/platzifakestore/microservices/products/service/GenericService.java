@@ -12,5 +12,6 @@ public interface GenericService<T,M,ID> {
     T transform(M model);
     M transformToModel(T entity);
     List<M> listAll();
+    List<T> saveAllEntities(List<T> models);
 
 }

@@ -80,7 +80,7 @@ public class ProductServiceImpl implements GenericService<Product, ProductModel,
 	@Override
 	public Product findEntityById(Long id) {
 		return productRepository.findById(id)
-	            .orElseThrow(() -> new EntityNotFoundException("Product not found"));
+                .orElse(null);
 	}
 
 	
@@ -130,5 +130,15 @@ public class ProductServiceImpl implements GenericService<Product, ProductModel,
 		return productRepository.findAll().stream()
 				.map(p-> transformToModel(p)).collect(Collectors.toList());
 	}
+
+
+	@Override
+	public List<Product> saveAllEntities(List<Product> models) {
+		List<Product> savedProducts = productRepository.saveAll(models);
+		return savedProducts;
+	}
+
+
+
 
 }
