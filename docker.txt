@@ -1,0 +1,2 @@
+docker build -t eureka-server-image -f Dockerfile-eureka.txt
+docker build -t products-image -f Dockerfile-products.txt

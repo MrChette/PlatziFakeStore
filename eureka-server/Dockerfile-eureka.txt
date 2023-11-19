@@ -1,0 +1,14 @@
+# Usa una imagen base de OpenJDK para Java 17
+FROM openjdk:17
+
+# Establece el directorio de trabajo en /app
+WORKDIR /app
+
+# Copia el resto de los archivos del microservicio
+COPY eureka-server .
+
+# Expone el puerto en el que tu aplicación Spring Boot está configurada para escuchar
+EXPOSE 8761
+
+# Comando para ejecutar la aplicación cuando se inicie el contenedor
+CMD ["./mvnw", "spring-boot:run"]
